@@ -4,8 +4,8 @@
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Sweetalert2 = factory());
+      typeof define === 'function' && define.amd ? define(factory) :
+          (global.Sweetalert2 = factory());
 }(this, function () { 'use strict';
 
   var swalPrefix = 'swal2-';
@@ -103,36 +103,36 @@
   var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
       '<ul class="' + swalClasses.progresssteps + '"></ul>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
-        '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
+      '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
       '</div>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.success + '">' +
-        '<span class="line tip"></span> <span class="line long"></span>' +
-        '<div class="placeholder"></div> <div class="fix"></div>' +
+      '<span class="line tip"></span> <span class="line long"></span>' +
+      '<div class="placeholder"></div> <div class="fix"></div>' +
       '</div>' +
       '<img class="' + swalClasses.image + '">' +
       '<h2></h2>' +
       '<div class="' + swalClasses.content + '"></div>' +
-      '<input class="' + swalClasses.input + '">' +
-      '<input type="file" class="' + swalClasses.file + '">' +
+      '<input id="' + swalClasses.input + '" class="' + swalClasses.input + '">' +
+      '<input type="file" id="' + swalClasses.file + '" class="' + swalClasses.file + '">' +
       '<div class="' + swalClasses.range + '">' +
-        '<output></output>' +
-        '<input type="range">' +
+      '<output></output>' +
+      '<input type="range">' +
       '</div>' +
-      '<select class="' + swalClasses.select + '"></select>' +
+      '<select id="' + swalClasses.select + '" class="' + swalClasses.select + '"></select>' +
       '<div class="' + swalClasses.radio + '"></div>' +
       '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
-        '<input type="checkbox">' +
+      '<input type="checkbox">' +
       '</label>' +
-      '<textarea class="' + swalClasses.textarea + '"></textarea>' +
+      '<textarea id="' + swalClasses.textarea + '" class="' + swalClasses.textarea + '"></textarea>' +
       '<div class="' + swalClasses.validationerror + '"></div>' +
       '<hr class="' + swalClasses.spacer + '">' +
-      '<button type="button" class="' + swalClasses.confirm + '">OK</button>' +
-      '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
+      '<button type="button" id="' + swalClasses.confirm + '" class="' + swalClasses.confirm + '">OK</button>' +
+      '<button type="button" id="' + swalClasses.cancel + '" class="' + swalClasses.cancel + '">Cancel</button>' +
       '<span class="' + swalClasses.close + '">&times;</span>' +
-    '</div>';
+      '</div>';
 
   var sweetContainer;
 
@@ -293,7 +293,7 @@
       buttons.reverse();
     }
     return buttons.concat(Array.prototype.slice.call(
-      getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
+        getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
     ));
   };
 
@@ -408,15 +408,15 @@
 
   var animationEndEvent = (function() {
     var testEl = document.createElement('div'),
-      transEndEventNames = {
-        'WebkitAnimation': 'webkitAnimationEnd',
-        'OAnimation': 'oAnimationEnd oanimationend',
-        'msAnimation': 'MSAnimationEnd',
-        'animation': 'animationend'
-      };
+        transEndEventNames = {
+          'WebkitAnimation': 'webkitAnimationEnd',
+          'OAnimation': 'oAnimationEnd oanimationend',
+          'msAnimation': 'MSAnimationEnd',
+          'animation': 'animationend'
+        };
     for (var i in transEndEventNames) {
       if (transEndEventNames.hasOwnProperty(i) &&
-        testEl.style[i] !== undefined) {
+          testEl.style[i] !== undefined) {
         return transEndEventNames[i];
       }
     }
@@ -537,8 +537,8 @@
       empty(progressStepsContainer);
       if (currentProgressStep >= params.progressSteps.length) {
         console.warn(
-          'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
-          '(currentProgressStep like JS arrays starts from 0)'
+            'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
+            '(currentProgressStep like JS arrays starts from 0)'
         );
       }
       params.progressSteps.forEach(function(step, index) {
@@ -805,7 +805,7 @@
             return modal.querySelector('.' + swalClasses.checkbox + ' input');
           case 'radio':
             return modal.querySelector('.' + swalClasses.radio + ' input:checked') ||
-              modal.querySelector('.' + swalClasses.radio + ' input:first-child');
+                modal.querySelector('.' + swalClasses.radio + ' input:first-child');
           case 'range':
             return modal.querySelector('.' + swalClasses.range + ' input');
           default:
@@ -848,16 +848,16 @@
 
         if (params.preConfirm) {
           params.preConfirm(value, params.extraParams).then(
-            function(preConfirmValue) {
-              sweetAlert.closeModal(params.onClose);
-              resolve(preConfirmValue || value);
-            },
-            function(error) {
-              sweetAlert.hideLoading();
-              if (error) {
-                sweetAlert.showValidationError(error);
+              function(preConfirmValue) {
+                sweetAlert.closeModal(params.onClose);
+                resolve(preConfirmValue || value);
+              },
+              function(error) {
+                sweetAlert.hideLoading();
+                if (error) {
+                  sweetAlert.showValidationError(error);
+                }
               }
-            }
           );
         } else {
           sweetAlert.closeModal(params.onClose);
@@ -912,16 +912,16 @@
                 if (params.inputValidator) {
                   sweetAlert.disableInput();
                   params.inputValidator(inputValue, params.extraParams).then(
-                    function() {
-                      sweetAlert.enableInput();
-                      confirm(inputValue);
-                    },
-                    function(error) {
-                      sweetAlert.enableInput();
-                      if (error) {
-                        sweetAlert.showValidationError(error);
+                      function() {
+                        sweetAlert.enableInput();
+                        confirm(inputValue);
+                      },
+                      function(error) {
+                        sweetAlert.enableInput();
+                        if (error) {
+                          sweetAlert.showValidationError(error);
+                        }
                       }
-                    }
                   );
                 } else {
                   confirm(inputValue);
@@ -931,7 +931,7 @@
                 confirm(true);
               }
 
-            // Clicked 'cancel'
+              // Clicked 'cancel'
             } else if (targetedCancel && sweetAlert.isVisible()) {
               sweetAlert.closeModal(params.onClose);
               reject('cancel');
@@ -989,7 +989,7 @@
           if (index === focusableElements.length) {
             index = 0;
 
-          // go to last item
+            // go to last item
           } else if (index === -1) {
             index = focusableElements.length - 1;
           }
@@ -1526,11 +1526,11 @@
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function() {
-      return this.catch(function() {
-        // Catch promise rejections silently.
-        // https://github.com/limonte/sweetalert2/issues/177
-      });
-    };
+          return this.catch(function() {
+            // Catch promise rejections silently.
+            // https://github.com/limonte/sweetalert2/issues/177
+          });
+        };
   } else {
     console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
   }
